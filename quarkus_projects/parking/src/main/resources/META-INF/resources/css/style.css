@@ -40,7 +40,7 @@ body {
 }
 
 .form {
-	width: 50%;
+	width: 70%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -103,6 +103,30 @@ body {
 	flex-direction: column;
 	margin-bottom: 1.1rem;
 	
+}
+
+.env{
+	display: flex;
+	flex-direction: column;
+	margin-left: auto;
+	padding: 16px;
+}
+
+#busca{
+    color: #6c63ff;
+    border: none;
+}
+
+#busca:hover{
+    background-color: #5852c4;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn-outline-light:hover{
+    background-color: #5852c4;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .input-box input {
