@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8">
-<title>Estacionamento</title>
-
+<meta charset="ISO-8859-1">
+<title>Modelo</title>
 <link rel="stylesheet" href="css/style.css">
 <script src="js/jquery.js"></script>
 
@@ -12,9 +11,10 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
-
-
-<script>
+	
+	
+	
+	<script>
 	$(document).ready(
 			function() {
 
@@ -22,13 +22,9 @@
 						function() {
 
 							var modelo = $("#modelo option:selected").text();
-							var marca = $("#marca option:selected").text();
-							var cor = $("#cor option:selected").text();
-
 							$("#dadosCarro").empty();
 
-							var url = "/carro/" + modelo + "/" + marca + "/"
-									+ cor + "";
+							var url = "/carro/" + modelo + "";
 
 							$.getJSON(url, function(data) {
 
@@ -52,11 +48,9 @@
 
 			});
 </script>
-
-
+	
+	
 </head>
-
-
 <body>
 	<div class="container">
 		<div class="form-image">
@@ -66,7 +60,7 @@
 			<form action="#">
 				<div class="form-header">
 					<div class="title">
-						<h1>Consulta de Carros</h1>
+						<h1>Consulta Placa</h1>
 					</div>
 				</div>
 
@@ -82,35 +76,12 @@
 
 						</select>
 					</div>
-
-
-
-					<div class="input-box">
-						<label>Marca</label> <select id="marca"
-							class="input-large form-control">
-							<option value="" selected="selected">Escolha o ano</option>
-							<option value="vw">vw</option>
-							<option value="fiat">fiat</option>
-							<option value="ferrari">ferrari</option>
-
-						</select>
-					</div>
-
-
-
-					<div class="input-box">
-						<label>Cor</label> <select id="cor"
-							class="input-large form-control">
-							<option value="" selected="selected">Escolha o periodo</option>
-							<option value="vermelho">vermelho</option>
-							<option value="verde">verde</option>
-
-						</select>
-					</div>
 					
 					<div class="env">
-						<button type="button" id="busca" id="busca" class="btn btn-outline-primary">Buscar</button>
+						<button type="button" id="busca" class="btn btn-outline-primary">Buscar</button>
 					</div>
+					
+				</div>
 
 					<table class="table">
 
@@ -118,8 +89,6 @@
 							<tr>
 								<th>Placa</th>
 								<th>Modelo</th>
-								<th>Marca</th>
-								<th>Cor</th>
 							</tr>
 						</thead>
 
@@ -128,7 +97,6 @@
 						</tbody>
 					</table>
 
-				</div>
 		</div>
 
 		</form>
@@ -136,5 +104,4 @@
 	</div>
 	
 </body>
-
 </html>
