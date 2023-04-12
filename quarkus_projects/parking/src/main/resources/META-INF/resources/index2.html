@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Estacionamento</title>
+
+
+<script src="js/jquery.js"></script>
+<link rel="stylesheet" href="/code-with-quarkus/src/main/resources/META-INF/resources/css/style.css">
+
+
+
+<script>
+		$(document).ready(function(){
+			
+
+			$("#busca").click(function() {
+
+				var nome = $( "#nome option:selected" ).text();
+				var marca = $( "#marca option:selected" ).text();
+				var tamanho = $( "#tamanho option:selected" ).text();
+				var valor = $( "#valor option:selected" ).text();
+					
+				$("#dadosTenis").empty();
+					
+				var url = "/tenis/"+nome+"/"+marca+"/"+tamanho+"/"+valor+"/";
+					
+
+				$.getJSON(url, function(data) {
+						
+						var itens = [];
+						
+						$.each(data, function(i){
+						
+							itens.push("<tr><td>"+ this.ident.nome + "</td><td>"+ this.ident.marca + "</td><td>"+ this.ident.tamanho + "</td><td>"+ this.ident.valor + "</td></tr>");
+							
+						});
+									
+						$("#dadosTenis").append(itens);
+						
+				});
+
+			});
+
+		});
+
+	</script>
+
+
+</head>
+
+
+<body>
+
+
+	<div id="painelBusca">
+
+
+
+		<div class="form-group col-md-4">
+			<label>Nome</label> <select id="nome"
+				class="input-large form-control">
+				<option value="" selected="selected">Escolha o nome</option>
+				<option value="Nike97">Nike97</option>
+				<option value="fox">fox</option>
+				<option value="fusca">fusca</option>
+
+			</select>
+		</div>
+
+
+
+		<div class="form-group col-md-4">
+			<label>Marca</label> <select id="marca"
+				class="input-large form-control">
+				<option value="" selected="selected">Escolha a marca</option>
+				<option value="Nike">Nike</option>
+				<option value="fiat">fiat</option>
+				<option value="ferrari">ferrari</option>
+
+			</select>
+		</div>
+
+
+
+		<div class="form-group col-md-4">
+			<label>Tamanho</label> <select id="tamanho"
+				class="input-large form-control">
+				<option value="" selected="selected">Escolha o tamanho</option>
+				<option value="40">40</option>
+				<option value="verde">verde</option>
+
+			</select>
+		</div>
+
+		<div class="form-group col-md-4">
+			<label>Valor</label> <select id="valor"
+				class="input-large form-control">
+				<option value="" selected="selected">Escolha o valor</option>
+				<option value="1400">1400</option>
+				<option value="verde">verde</option>
+
+			</select>
+		</div>
+
+	</div>
+
+	<button id="busca" class="btn btn-primary col-md-offset-5">Buscar</button>
+
+	<table class="content-table">
+		<caption>Tenis</caption>
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Marca</th>
+				<th>Tamanho</th>
+				<th>Valor</th>
+			</tr>
+		</thead>
+
+		<tbody id="dadosTenis">
+
+		</tbody>
+	</table>
+
+
+</body>
+
+</html>
