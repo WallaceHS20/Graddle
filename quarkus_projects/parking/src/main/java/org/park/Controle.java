@@ -21,21 +21,13 @@ public class Controle {
 	
 	
 	@GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("{nome}/{marca}/{tamanho}/{valor}")
-    public Response tenis2(@PathParam String nome, @PathParam String marca, @PathParam String tamanho, @PathParam String valor) {	
-		System.out.println(nome);
-		System.out.println(marca);
-		System.out.println(tamanho);
-		System.out.println(valor);
-		List<Tenis> tenisEncontrados = modelo.buscarIdentificacao(new Identificacao(nome, marca, tamanho, valor));	
-		String json2 = new Gson().toJson(tenisEncontrados);
-    	return Response.status(200).entity(json2).build();	
-    }
-	
-	
-	
-	
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("{nome}/{marca}/{tamanho}/{valor}")
+	public Response tenis2(@PathParam String nome, @PathParam String marca, @PathParam String tamanho, @PathParam String valor) {	
+	    List<Tenis> tenisEncontrados = modelo.buscarIdentificacao(new Identificacao(nome, marca, tamanho, valor));
+	    String json2 = new Gson().toJson(tenisEncontrados);
+	    return Response.status(200).entity(json2).build();	
+	}
 	
     @GET
     @Produces(MediaType.TEXT_PLAIN)

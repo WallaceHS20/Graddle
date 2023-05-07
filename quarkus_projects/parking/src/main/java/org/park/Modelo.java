@@ -38,5 +38,15 @@ public class Modelo {
 		
 	}
 	
+	public List<Tenis> buscarModelo(String marca){
+	    List<Tenis> resultado = new LinkedList<Tenis>();
+	    for(Tenis tenis : tenisList) {
+	        if(tenis.getIdent().getMarca().equals(marca)) {
+	            resultado.add(tenis);
+	        }
+	    }
+	    return resultado;
+	}
+	
 	
 }

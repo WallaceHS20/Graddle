@@ -5,20 +5,70 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- JS LOCAL -->
+<script src="js/jquery.js"></script>
+
+<!-- CSS -->
 <link rel="stylesheet" href="/css/style.css">
-<title>Formulário</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,600;1,300;1,600&family=Mulish:wght@500&display=swap" rel="stylesheet">
+
+<title>TioAliTenis</title>
 </head>
+
+<script>
+	$(document).ready(
+			function() {
+
+				$("#busca").click(
+						function() {
+
+							var nome = $("#nome option:selected").text();
+							var marca = $("#marca option:selected").text();
+							var tamanho = $("#tamanho option:selected").text();
+							var valor = $("#valor option:selected").text();
+
+							$("#dadosTenis").empty();
+
+							var url = "/tenis/" + nome + "/" + marca + "/"
+									+ tamanho + "/" + valor + "/";
+
+							$.getJSON(url, function(data) {
+
+								var itens = [];
+
+								$.each(data, function(i) {
+
+									itens.push("<tr><td>" + this.ident.nome
+											+ "</td><td>" + this.ident.marca
+											+ "</td><td>" + this.ident.tamanho
+											+ "</td><td>" + this.ident.valor
+											+ "</td></tr>");
+
+								});
+
+								$("#dadosTenis").append(itens);
+
+							});
+
+						});
+
+			});
+</script> 
 
 <body>
 	<div class="container">
 		<div class="form-image">
-			<img src="/css/tenis.jpg" alt="">
+			<img src="/img/tenis.jpg" alt="">
 		</div>
 		<div class="form">
 			<form action="#">
 				<div class="form-header">
 					<div class="title">
-						<h1>Consultar Tênis</h1>
+						<h1>Tio-Ali</h1>
 					</div>
 				</div>
 
@@ -75,16 +125,33 @@
 						</select>
 					</div>
 
+					<div class="input-box">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Marca</th>
+									<th>Tamanho</th>
+									<th>Valor</th>
+								</tr>
+							</thead>
+
+							<tbody id="dadosTenis">
+
+							</tbody>
+						</table>
+					</div>
+
 				</div>
 
 				<div class="continue-button">
-					<button>
-						<a href="#">Continuar</a>
-					</button>
+					<button id="busca">Buscar</button>
 				</div>
 			</form>
 		</div>
 	</div>
+	    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	
 </body>
 
 </html>
