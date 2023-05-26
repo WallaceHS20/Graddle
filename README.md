@@ -2,7 +2,7 @@
 
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=9400D3&height=180&section=header&text=&animation=fadeIn&fontAlignY=35&fontSize=30&fontColor=FFFAFA"/>
 
-# Sistema de Busa por Tênis 
+# Sistema de Busca por Tênis 
   
 <br>
 
